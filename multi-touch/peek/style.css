@@ -1,0 +1,57 @@
+html {
+  box-sizing: border-box;
+}
+html, body {
+  height: 100%;
+  padding: 0; margin: 0;
+  overflow: hidden;
+}
+
+body {
+  padding: 1rem;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 20px;
+}
+
+#layer0 {
+  width: 100%;
+  height: 49%;
+  background-color: white;
+  overflow: hidden;
+}
+
+#split {
+  width: 95%;
+  font-size: 25;
+  height: 2%;
+  background-color: white;
+  overflow: hidden;
+  border-width: 1px;
+  border-style: hidden; 
+  border-color: black;
+}
+
+#layer2 {
+  width: 100%;
+  height: 49%;
+  background-color: white;
+  overflow: hidden;
+}
+
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.pointer {
+  background-color: #69d3c4;
+  position: absolute;
+  width: 15vw;
+  height: 15vw;
+  border-radius: 50%;
+  opacity: 1.0; 
+}
+
+.down {
+  background-color:  #4c9d92;
+}
