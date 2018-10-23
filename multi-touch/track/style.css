@@ -9,7 +9,7 @@ html, body {
 
 body {
   padding: 1rem;
-  background-color: #f3efb1;
+  background-color: #f7f6f3;
   font-family: 'Courier New', Courier, monospace;
   font-size: 20px;
   touch-action: none;
@@ -39,4 +39,67 @@ body {
   width: 100px;
   height: 400px;
   size: 10%;
+  z-index: -1;
+}
+
+#scrollable {
+  overflow-y: scroll;
+  height: 700px;
+  width: 600px;
+  left: 600px;
+  top: 100px;
+  position: absolute;
+}
+
+#infinite-list{ 
+    /* We need to limit the height and show a scrollbar */
+    position: absolute;
+    width: 1000px;
+    left: 35%;
+    height: 700px;
+    overflow: auto;
+    z-index: 1;
+  
+    /* Optional, only to check that it works with margin/padding */
+    margin: 30px;
+    padding: 20px;
+}
+
+#frontPage {
+  left: 15%;
+  top: 100px;
+  opacity: 1;
+  width: 800px;
+  position: absolute;
+  z-index: 1;
+}
+#page1 {
+  visibility: hidden;
+  left: 15%;
+  top: 100px;
+  opacity: 1;
+  width: 800px;
+  position: absolute;
+  z-index: 0;
+}
+.page2 {
+  left: 50%;
+  top: 100px;
+  opacity: 1;
+  visibility: visible;
+
+}
+.page3 {
+  left: 50%;
+  top: 100px;
+  opacity: 1;
+  visibility: visible;
+}
+
+.imageContainer > img:hover {
+  width: 700px;
+  height: 500px;
+  left:300px;
+  position: absolute;
+  z-index: 2;
 }

@@ -6,7 +6,7 @@ function onDocumentReady() {
   el.addEventListener('pointermove', onPointerMove);
   el.addEventListener('pointerleave', onPointerLeave);
 
-  // prevent default gestures in iOS
+  //prevent default gestures in iOS
   el.addEventListener('gesturestart', e => e.preventDefault());
   el.addEventListener('gesturechange', e => e.preventDefault());
   el.addEventListener('gestureend', e => e.preventDefault());
@@ -17,7 +17,6 @@ function onDocumentReady() {
   el.addEventListener('gesturechange', e => e.preventDefault());
   el.addEventListener('gestureend', e => e.preventDefault());
 
-
   setInterval(() => {
     displayData();
   }, 100)
@@ -25,7 +24,11 @@ function onDocumentReady() {
 }
 
 var vab = 0;
-var elem = document.getElementById("text1");
+var elem = document.getElementById("frontPage");
+var elemp1 = document.getElementById("page1");
+var elemp2 = document.getElementById("page2");
+var elemp3 = document.getElementById("page3");
+
 
 function displayData() {
   let g = pointers.createPointerGroupings();
@@ -35,6 +38,20 @@ function displayData() {
 
   if (g.numOfGroupings > 0) {
     let pg = g.groupings[0];
+
+    if(pointers.currentXpos(pointers.pointerIds[0]) >= 250 && pointers.currentYpos(pointers.pointerIds[0]) <= 100)
+    {
+      console.log("yes");
+      elem.style.opacity = 0.3;
+      if(pointers.numOfPointers >= 2 && pg.isMovingLeft == true)
+      {
+        elemp1.style.visibility = "visible";
+      }
+    }
+    else{
+      elemp1.style.visibility = "hidden";
+      elem.style.opacity = 1;
+    }
 
 
     text = "Moving up: " + pg.isMovingUp + "<br/>" +
