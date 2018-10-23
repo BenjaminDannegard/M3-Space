@@ -66,34 +66,46 @@ body {
 }
 
 #frontPage {
-  left: 15%;
-  top: 100px;
+  left: 2%;
   opacity: 1;
-  width: 800px;
+  /*width: 800px;*/
+  width: 300px;
   position: absolute;
   z-index: 1;
+  top: 0px;
+  box-shadow: 2px 2px 5px grey;
 }
 #page1 {
-  visibility: hidden;
-  left: 15%;
-  top: 100px;
+  visibility: visible;
+  left: 4%;
   opacity: 1;
-  width: 800px;
+  width: 300px;
   position: absolute;
   z-index: 0;
+  box-shadow: 2px 2px 5px grey;
 }
-.page2 {
-  left: 50%;
-  top: 100px;
-  opacity: 1;
+#page2 {
   visibility: visible;
-
+  left: 6%;
+  opacity: 1;
+  width: 300px;
+  position: absolute;
+  z-index: -1;
+  box-shadow: 2px 2px 5px grey;
 }
 .page3 {
-  left: 50%;
+  left: 18%;
   top: 100px;
   opacity: 1;
   visibility: visible;
+  box-shadow: 2px 2px 5px grey;
+
+}
+
+#data{
+  visibility: hidden;
+  position: absolute;
+  z-index: -5;
 }
 
 .imageContainer > img:hover {

@@ -43,14 +43,22 @@ function displayData() {
     {
       console.log("yes");
       elem.style.opacity = 0.3;
+      elemp1.style.left = "2%";
       if(pointers.numOfPointers >= 2 && pg.isMovingLeft == true)
       {
-        elemp1.style.visibility = "visible";
+        var x = 1;
+        elemp1.style.visibility = "hidden";
+        elemp2.style.left = "2%";
+      }
+      if(pointers.numOfPointers >= 2 && pg.isMovingLeft == true && x == 1)
+      {
       }
     }
     else{
-      elemp1.style.visibility = "hidden";
       elem.style.opacity = 1;
+      elemp1.style.visibility = "visible";
+      elemp2.style.left = "6%";
+      elemp1.style.left = "4%";
     }
 
 
