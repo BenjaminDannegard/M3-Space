@@ -21,14 +21,16 @@ function onDocumentReady() {
     displayData();
   }, 100)
 
+
 }
 
+var chk, chk1, chk2, chk3;
 var vab = 0;
 var elem = document.getElementById("frontPage");
 var elemp1 = document.getElementById("page1");
 var elemp2 = document.getElementById("page2");
 var elemp3 = document.getElementById("page3");
-
+var onPage = "page1";
 
 function displayData() {
   let g = pointers.createPointerGroupings();
@@ -41,24 +43,59 @@ function displayData() {
 
     if(pointers.currentXpos(pointers.pointerIds[0]) >= 250 && pointers.currentYpos(pointers.pointerIds[0]) <= 100)
     {
-      console.log("yes");
-      elem.style.opacity = 0.3;
-      elemp1.style.left = "2%";
-      if(pointers.numOfPointers >= 2 && pg.isMovingLeft == true)
-      {
-        var x = 1;
+
+      switch (onPage){
+        case "page1":
+        elem.style.opacity = 0.3;
+        elemp1.style.left = "2%";
+        if(pointers.numOfPointers >= 2 && onPage == "page1" && pg.isMovingLeft == true)
+        {
+          onPage = "page2";
+        }
+        console.log(onPage);
+        break;
+        case "page2":
         elemp1.style.visibility = "hidden";
         elemp2.style.left = "2%";
+        if(pointers.numOfPointers >= 2 && pg.isMovingLeft == true && onPage == "page2")
+        {
+          onPage = "page3";
+        }
+        console.log(onPage);
+        break;
+
+        case "page3":
+        elemp2.style.visibility = "hidden";
+        elemp3.style.left = "2%";
+        break;
       }
-      if(pointers.numOfPointers >= 2 && pg.isMovingLeft == true && x == 1)
-      {
-      }
+
+      // //RIGHT SWIPES
+      // if(pointers.numOfPointers >= 2 && pg.isMovingRight == true && elemp2.style.visibility == "visible")
+      // {
+      //   elemp1.style.visibility = "visible";
+      //   elemp1.style.left = "2%";
+      //   elemp2.style.left = "4%";
+      //   elemp3.style.left = "6%";
+      // }
+      // if(pointers.numOfPointers >= 2 && pg.isMovingRight == true && elemp3.visibility == "visible")
+      // {
+      //   elemp2.style.visibility = "visible";
+      //   elemp2.style.left = "2%";
+      //   elemp1.style.left = "4%";
+      //   elemp3.style.left = "6%";
+      // }
     }
     else{
       elem.style.opacity = 1;
       elemp1.style.visibility = "visible";
+      elemp2.style.visibility = "visible";
+      elemp3.style.visibility = "visible";
       elemp2.style.left = "6%";
       elemp1.style.left = "4%";
+      elemp3.style.left = "8%";
+      chk = 0;
+      onPage = "page1";
     }
 
 
@@ -135,4 +172,4 @@ function getOrCreate(evt) {
 }
 
 if (document.readyState != 'loading') onDocumentReady();
-else document.addEventListener('DOMContentLoaded', onDocumentReady); 
+else document.addEventListener('DOMContentLoaded', onDocumentReady);

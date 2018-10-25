@@ -71,6 +71,7 @@ body {
   /*width: 800px;*/
   width: 300px;
   position: absolute;
+  height: 400px;
   z-index: 1;
   top: 0px;
   box-shadow: 2px 2px 5px grey;
@@ -82,7 +83,9 @@ body {
   width: 300px;
   position: absolute;
   z-index: 0;
+  top: 0px;
   box-shadow: 2px 2px 5px grey;
+  height: 400px;
 }
 #page2 {
   visibility: visible;
@@ -91,15 +94,20 @@ body {
   width: 300px;
   position: absolute;
   z-index: -1;
+  top: 0px;
   box-shadow: 2px 2px 5px grey;
+  height: 400px;
 }
-.page3 {
-  left: 18%;
-  top: 100px;
-  opacity: 1;
+#page3 {
   visibility: visible;
+  left: 8%;
+  opacity: 1;
+  width: 300px;
+  position: absolute;
+  z-index: -3;
+  top: 0px;
   box-shadow: 2px 2px 5px grey;
-
+  height: 400px;
 }
 
 #data{
