@@ -48,7 +48,8 @@ function displayData() {
         case "page1":
         elem.style.opacity = 0.3;
         elemp1.style.left = "2%";
-        if(pointers.numOfPointers >= 2 && onPage == "page1" && pg.isMovingLeft == true)
+        elemp1.style.visibility = "visible";
+        if(pointers.numOfPointers >= 2 && pg.isMovingLeft == true && onPage == "page1")
         {
           onPage = "page2";
         }
@@ -57,16 +58,23 @@ function displayData() {
         case "page2":
         elemp1.style.visibility = "hidden";
         elemp2.style.left = "2%";
+        elemp2.style.visibility = "visible";
+        if(pointers.numOfPointers >= 2 && pg.isMovingRight == true && onPage == "page2")
+        {
+          onPage = "page1";
+        }
         if(pointers.numOfPointers >= 2 && pg.isMovingLeft == true && onPage == "page2")
         {
           onPage = "page3";
         }
-        console.log(onPage);
         break;
-
         case "page3":
         elemp2.style.visibility = "hidden";
         elemp3.style.left = "2%";
+        if(pointers.numOfPointers >= 2 && pg.isMovingRight == true && onPage == "page3")
+        {
+          onPage = "page2";
+        }
         break;
       }
 
