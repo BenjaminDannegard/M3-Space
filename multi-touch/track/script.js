@@ -21,7 +21,6 @@ function onDocumentReady() {
   //   displayData();
   // }, 100)
 
-
 }
 
 var chk, chk1, chk2, chk3;
@@ -43,71 +42,60 @@ function displayData() {
 
     if(pointers.currentXpos(pointers.pointerIds[0]) >= 250 && pointers.currentYpos(pointers.pointerIds[0]) <= 100){
 
-      switch (onPage){
+      switch (onPage) {
         case "page1":
-        elem.style.opacity = "0.3";
-        elemp1.style.left = "2%";
-        elemp1.style.visibility = "visible";
-        if(pointers.numOfPointers >= 2 && pointers.getPointer(pointers.pointerIds[1]).isMovingLeft == true && onPage == "page1")
-        {
-          onPage = "page2";
-        }
-        if(pointers.numOfPointers >= 2 && pointers.getPointer(pointers.pointerIds[1]).isMovingUp == true && onPage == "page1")
-        {
-          elemp1.style.zIndex = "5";
-        }
-        console.log(onPage);
-        break;
-        case "page2":
-        pointers.getPointer(pointers.pointerIds[1]).isMovingUp();
-        elemp1.style.visibility = "hidden";
-        elemp2.style.left = "2%";
-        elemp2.style.visibility = "visible";
-        if(pointers.numOfPointers >= 2 && pointers.getPointer(pointers.pointerIds[1]).isMovingRight == true && onPage == "page2")
-        {
-          onPage = "page1";
-        }
-        if(pointers.numOfPointers >= 2 && pointers.getPointer(pointers.pointerIds[1]).isMovingLeft == true && onPage == "page2")
-        {
-          onPage = "page3";
-        }
-        if(pointers.numOfPointers >= 2 && pointers.getPointer(pointers.pointerIds[1]).isMovingUp == true && onPage == "page2")
-        {
-          elemp2.style.zIndex = "5";
-        }
-        if (pointers.currentXpos(pointers.pointerIds[1]) >= 150 && pointers.currentXpos(pointers.pointerIds[1]) >= 300
-          && pointers.currentYpos(pointers.pointerIds[1]) >= 100 && pointers.currentYpos(pointers.pointerIds[1]) <= 300)
-          {
-          Pressure.set('#frontPage', {
-            change: function (force) {
-              console.log(force);
-              if (force == 1) {
-              }
-            }
-          });
+          elem.style.opacity = "0.3";
+          elemp1.style.left = "2%";
+          elemp1.style.visibility = "visible";
+          if (pointers.numOfPointers >= 2 && pointers.getPointer(pointers.pointerIds[1]).isMovingLeft == true && pointers.getPointer(pointers.pointerIds[1]).horizontalSpeed < -500 && onPage == "page1") {
+            onPage = "page2";
           }
-        break;
-        case "page3":
-        elemp2.style.visibility = "hidden";
-        elemp3.style.left = "2%";
-        if(pointers.numOfPointers >= 2 && pointers.getPointer(pointers.pointerIds[1]).isMovingRight == true && onPage == "page3")
-        {
-          onPage = "page2";
-        }
-        if(pointers.numOfPointers >= 2 && pointers.getPointer(pointers.pointerIds[1]).isMovingUp == true && onPage == "page3")
-        {
-          elemp2.style.zIndex = "5";
-        }
-        if (pointers.currentXpos(pointers.pointerIds[1]) >= 150 && pointers.currentXpos(pointers.pointerIds[1]) >= 300
-            && pointers.currentYpos(pointers.pointerIds[1]) >= 100 && pointers.currentYpos(pointers.pointerIds[1]) <= 300)
-          {
+          if (pointers.numOfPointers >= 2 && pointers.getPointer(pointers.pointerIds[1]).verticalSpeed >= 500 && onPage == "page1") {
+            elemp1.style.zIndex = "5";
+          }
+          break;
+        case "page2":
+          elemp1.style.visibility = "hidden";
+          elemp2.style.left = "2%";
+          elemp2.style.visibility = "visible";
+          if (pointers.numOfPointers >= 2 && pointers.getPointer(pointers.pointerIds[1]).isMovingRight == true && pointers.getPointer(pointers.pointerIds[1]).horizontalSpeed >= 500 && onPage == "page2") {
+            onPage = "page1";
+          }
+          if (pointers.numOfPointers >= 2 && pointers.getPointer(pointers.pointerIds[1]).isMovingLeft == true && pointers.getPointer(pointers.pointerIds[1]).horizontalSpeed < -500 && onPage == "page2") {
+            onPage = "page3";
+          }
+          if (pointers.numOfPointers >= 2 && pointers.getPointer(pointers.pointerIds[1]).verticalSpeed >= 500 && onPage == "page2") {
+            elemp2.style.zIndex = "5";
+          }
+          if (pointers.currentXpos(pointers.pointerIds[1]) >= 150 && pointers.currentXpos(pointers.pointerIds[1]) >= 300
+            && pointers.currentYpos(pointers.pointerIds[1]) >= 100 && pointers.currentYpos(pointers.pointerIds[1]) <= 300) {
             Pressure.set('#frontPage', {
-              change: function(force) {
+              change: function (force) {
+                console.log(force);
+                if (force == 1) {
+                }
+              }
+            });
+          }
+          break;
+        case "page3":
+          elemp2.style.visibility = "hidden";
+          elemp3.style.left = "2%";
+          if (pointers.numOfPointers >= 2 && pointers.getPointer(pointers.pointerIds[1]).isMovingRight == true && pointers.getPointer(pointers.pointerIds[1]).horizontalSpeed >= 500 && onPage == "page3") {
+            onPage = "page2";
+          }
+          if (pointers.numOfPointers >= 2 && pointers.getPointer(pointers.pointerIds[1]).verticalSpeed >= 500 && onPage == "page3") {
+            elemp3.style.zIndex = "5";
+          }
+          if (pointers.currentXpos(pointers.pointerIds[1]) >= 150 && pointers.currentXpos(pointers.pointerIds[1]) >= 300
+            && pointers.currentYpos(pointers.pointerIds[1]) >= 100 && pointers.currentYpos(pointers.pointerIds[1]) <= 300) {
+            Pressure.set('#frontPage', {
+              change: function (force) {
                 console.log(force);
               }
             });
           }
-        break;
+          break;
       }
     }
     else{
@@ -121,6 +109,8 @@ function displayData() {
       chk = 0;
       onPage = "page1";
       elemp2.style.zIndex = "-1";
+      elemp3.style.zIndex = "-2";
+      elemp1.style.zIndex = "0";
     }
   }
 }
@@ -134,7 +124,7 @@ function onPointerUp(e) {
 function onPointerDown(e) {
   e.preventDefault();
   pointers.updatePointer(e);
-  displayData();
+  setInterval(displayData, 500);
   /*if(!window.addEventListener('mousemove', divMove, true))
     window.addEventListener('mousemove', divMove, true);
   else
