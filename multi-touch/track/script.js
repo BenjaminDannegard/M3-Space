@@ -17,10 +17,9 @@ function onDocumentReady() {
   el.addEventListener('gesturechange', e => e.preventDefault());
   el.addEventListener('gestureend', e => e.preventDefault());
 
-  setInterval(() => {
-    displayData();
-  }, 100)
-
+  // setInterval(() => {
+  //   displayData();
+  // }, 100)
 
 }
 
@@ -38,81 +37,79 @@ function displayData() {
   if (pointers.numOfPointers > 1)
     var { distance, isApproaching } = pointers.comparePointers(pointers.pointerIds[0], pointers.pointerIds[1]);
 
-  if (g.numOfGroupings > 0) {
+  if (g.numOfGroupings > 0){
     let pg = g.groupings[0];
 
-    if(pointers.currentXpos(pointers.pointerIds[0]) >= 250 && pointers.currentYpos(pointers.pointerIds[0]) <= 100)
-    {
+    if(pointers.currentXpos(pointers.pointerIds[0]) >= 250 && pointers.currentYpos(pointers.pointerIds[0]) <= 100){
 
-      switch (onPage){
+      switch (onPage) {
         case "page1":
-        elem.style.opacity = 0.3;
-        elemp1.style.visibility = "visible";
-        if(pointers.numOfPointers >= 2 && pg.isMovingDown == true && onPage == "page1")
-        {
-          onPage = "page2";
-        }
-        console.log(onPage);
-        break;
+          elem.style.opacity = "0.3";
+          elemp1.style.left = "2%";
+          elemp1.style.visibility = "visible";
+          if (pointers.numOfPointers >= 2 && pointers.getPointer(pointers.pointerIds[1]).isMovingLeft == true && pointers.getPointer(pointers.pointerIds[1]).horizontalSpeed < -500 && onPage == "page1") {
+            onPage = "page2";
+          }
+          if (pointers.numOfPointers >= 2 && pointers.getPointer(pointers.pointerIds[1]).verticalSpeed >= 500 && onPage == "page1") {
+            elemp1.style.zIndex = "5";
+          }
+          break;
         case "page2":
-        elemp1.style.visibility = "hidden";
-        elemp2.style.visibility = "visible";
-        if(pointers.numOfPointers >= 2 && pg.isMovingUp == true && onPage == "page2")
-        {
-          onPage = "page1";
-        }
-        if(pointers.numOfPointers >= 2 && pg.isMovingDown == true && onPage == "page2")
-        {
-          onPage = "page3";
-        }
-        break;
+          elemp1.style.visibility = "hidden";
+          elemp2.style.left = "2%";
+          elemp2.style.visibility = "visible";
+          if (pointers.numOfPointers >= 2 && pointers.getPointer(pointers.pointerIds[1]).isMovingRight == true && pointers.getPointer(pointers.pointerIds[1]).horizontalSpeed >= 500 && onPage == "page2") {
+            onPage = "page1";
+          }
+          if (pointers.numOfPointers >= 2 && pointers.getPointer(pointers.pointerIds[1]).isMovingLeft == true && pointers.getPointer(pointers.pointerIds[1]).horizontalSpeed < -500 && onPage == "page2") {
+            onPage = "page3";
+          }
+          if (pointers.numOfPointers >= 2 && pointers.getPointer(pointers.pointerIds[1]).verticalSpeed >= 500 && onPage == "page2") {
+            elemp2.style.zIndex = "5";
+          }
+          if (pointers.currentXpos(pointers.pointerIds[1]) >= 150 && pointers.currentXpos(pointers.pointerIds[1]) >= 300
+            && pointers.currentYpos(pointers.pointerIds[1]) >= 100 && pointers.currentYpos(pointers.pointerIds[1]) <= 300) {
+            Pressure.set('#frontPage', {
+              change: function (force) {
+                console.log(force);
+                if (force == 1) {
+                }
+              }
+            });
+          }
+          break;
         case "page3":
-        elemp2.style.visibility = "hidden";
-        if(pointers.numOfPointers >= 2 && pg.isMovingUp == true && onPage == "page3")
-        {
-          onPage = "page2";
-        }
-        break;
+          elemp2.style.visibility = "hidden";
+          elemp3.style.left = "2%";
+          if (pointers.numOfPointers >= 2 && pointers.getPointer(pointers.pointerIds[1]).isMovingRight == true && pointers.getPointer(pointers.pointerIds[1]).horizontalSpeed >= 500 && onPage == "page3") {
+            onPage = "page2";
+          }
+          if (pointers.numOfPointers >= 2 && pointers.getPointer(pointers.pointerIds[1]).verticalSpeed >= 500 && onPage == "page3") {
+            elemp3.style.zIndex = "5";
+          }
+          if (pointers.currentXpos(pointers.pointerIds[1]) >= 150 && pointers.currentXpos(pointers.pointerIds[1]) >= 300
+            && pointers.currentYpos(pointers.pointerIds[1]) >= 100 && pointers.currentYpos(pointers.pointerIds[1]) <= 300) {
+            Pressure.set('#frontPage', {
+              change: function (force) {
+                console.log(force);
+              }
+            });
+          }
+          break;
       }
-
-      // //RIGHT SWIPES
-      // if(pointers.numOfPointers >= 2 && pg.isMovingRight == true && elemp2.style.visibility == "visible")
-      // {
-      //   elemp1.style.visibility = "visible";
-      //   elemp1.style.left = "2%";
-      //   elemp2.style.left = "4%";
-      //   elemp3.style.left = "6%";
-      // }
-      // if(pointers.numOfPointers >= 2 && pg.isMovingRight == true && elemp3.visibility == "visible")
-      // {
-      //   elemp2.style.visibility = "visible";
-      //   elemp2.style.left = "2%";
-      //   elemp1.style.left = "4%";
-      //   elemp3.style.left = "6%";
-      // }
     }
     else{
-      elem.style.opacity = 1;
+      elem.style.opacity = "1";
       elemp1.style.visibility = "visible";
       elemp2.style.visibility = "visible";
       elemp3.style.visibility = "visible";
       chk = 0;
       onPage = "page1";
+      elemp2.style.zIndex = "-1";
+      elemp3.style.zIndex = "-2";
+      elemp1.style.zIndex = "0";
     }
-
-
-    text = "Moving up: " + pg.isMovingUp + "<br/>" +
-      "Moving left: " + pg.isMovingLeft + "<br/>" +
-      "Number of groupings: " + g.numOfGroupings + "<br/>" +
-      "Horizontal speed: " + Math.round(pg.horizontalSpeed) + "<br/>" +
-      "Vertical speed: " + Math.round(pg.verticalSpeed) + "<br/>" +
-      "Absolut speed: " + Math.round(pg.speed) + "<br/>" +
-      "Num of pointers: " + pointers.numOfPointers + "<br/>" +
-      "Distance between 1. & 2. pointers: " + distance + "<br/>" +
-      "Pointer 1 & 2 approaching: " + isApproaching;
-
   }
-  document.getElementById("data").innerHTML = text;
 }
 
 function onPointerUp(e) {
@@ -124,6 +121,7 @@ function onPointerUp(e) {
 function onPointerDown(e) {
   e.preventDefault();
   pointers.updatePointer(e);
+  setInterval(displayData, 500);
   /*if(!window.addEventListener('mousemove', divMove, true))
     window.addEventListener('mousemove', divMove, true);
   else
