@@ -46,57 +46,102 @@ function displayData() {
         case "page1":
           elem.style.opacity = "0.3";
           elemp1.style.left = "2%";
+          elemp2.style.zIndex = "-1";
+          elemp3.style.zIndex = "-2";
+          elemp1.style.zIndex = "0";
           elemp1.style.visibility = "visible";
-          if (pointers.numOfPointers >= 2 && pointers.getPointer(pointers.pointerIds[1]).isMovingLeft == true && pointers.getPointer(pointers.pointerIds[1]).horizontalSpeed < -500 && onPage == "page1") {
+          if (pointers.numOfPointers >= 2 && pointers.getPointer(pointers.pointerIds[1]).isMovingLeft == true && pointers.getPointer(pointers.pointerIds[1]).horizontalSpeed < -300 && onPage == "page1") {
+            elemp3.style.left = "2%";
+            elemp2.style.left = "2%";
+            elemp3.style.top = "0px";
+            elemp2.style.top = "0px";
             onPage = "page2";
           }
-          if (pointers.numOfPointers >= 2 && pointers.getPointer(pointers.pointerIds[1]).verticalSpeed >= 500 && onPage == "page1") {
+          if (pointers.numOfPointers >= 2 && pointers.getPointer(pointers.pointerIds[1]).verticalSpeed >= 300 && onPage == "page1") {
             elemp1.style.zIndex = "5";
+          }
+          if (pointers.currentXpos(pointers.pointerIds[1]) >= 150 && pointers.currentXpos(pointers.pointerIds[1]) <= 300
+            && pointers.currentYpos(pointers.pointerIds[1]) >= 100 && pointers.currentYpos(pointers.pointerIds[1]) <= 300) {
+            Pressure.set('#frontPage', {
+              change: function (force) {
+                if (force == 1) {
+                  elemp3.style.left = "6%";
+                  elemp2.style.left = "4%";
+                  elemp3.style.top = "4%";
+                  elemp2.style.top = "2%";
+                }
+              }
+            });
           }
           break;
         case "page2":
-          elemp1.style.visibility = "hidden";
           elemp2.style.left = "2%";
+          elemp2.style.zIndex = "0";
+          elemp3.style.zIndex = "-2";
+          elemp1.style.zIndex = "-1";
           elemp2.style.visibility = "visible";
-          if (pointers.numOfPointers >= 2 && pointers.getPointer(pointers.pointerIds[1]).isMovingRight == true && pointers.getPointer(pointers.pointerIds[1]).horizontalSpeed >= 500 && onPage == "page2") {
+          if (pointers.numOfPointers >= 2 && pointers.getPointer(pointers.pointerIds[1]).isMovingRight == true && pointers.getPointer(pointers.pointerIds[1]).horizontalSpeed >= 300 && onPage == "page2") {
+            elemp1.style.left = "2%";
+            elemp3.style.left = "2%";
+            elemp1.style.top = "0px";
+            elemp3.style.top = "0px";
             onPage = "page1";
           }
-          if (pointers.numOfPointers >= 2 && pointers.getPointer(pointers.pointerIds[1]).isMovingLeft == true && pointers.getPointer(pointers.pointerIds[1]).horizontalSpeed < -500 && onPage == "page2") {
+          if (pointers.numOfPointers >= 2 && pointers.getPointer(pointers.pointerIds[1]).isMovingLeft == true && pointers.getPointer(pointers.pointerIds[1]).horizontalSpeed < -300 && onPage == "page2") {
+            elemp1.style.left = "2%";
+            elemp3.style.left = "2%";
+            elemp1.style.top = "0px";
+            elemp3.style.top = "0px";
             onPage = "page3";
           }
           if (pointers.numOfPointers >= 2 && pointers.getPointer(pointers.pointerIds[1]).verticalSpeed >= 500 && onPage == "page2") {
             elemp2.style.zIndex = "5";
           }
-          if (pointers.currentXpos(pointers.pointerIds[1]) >= 150 && pointers.currentXpos(pointers.pointerIds[1]) >= 300
+          if (pointers.currentXpos(pointers.pointerIds[1]) >= 150 && pointers.currentXpos(pointers.pointerIds[1]) <= 300
             && pointers.currentYpos(pointers.pointerIds[1]) >= 100 && pointers.currentYpos(pointers.pointerIds[1]) <= 300) {
             Pressure.set('#frontPage', {
               change: function (force) {
                 console.log(force);
                 if (force == 1) {
+                  elemp1.style.left = "4%";
+                  elemp3.style.left = "6%";
+                  elemp1.style.top = "2%";
+                  elemp3.style.top = "4%";
                 }
               }
             });
           }
           break;
         case "page3":
-          elemp2.style.visibility = "hidden";
           elemp3.style.left = "2%";
-          if (pointers.numOfPointers >= 2 && pointers.getPointer(pointers.pointerIds[1]).isMovingRight == true && pointers.getPointer(pointers.pointerIds[1]).horizontalSpeed >= 500 && onPage == "page3") {
+          elemp2.style.zIndex = "-2";
+          elemp3.style.zIndex = "0";
+          elemp1.style.zIndex = "-1";
+          if (pointers.numOfPointers >= 2 && pointers.getPointer(pointers.pointerIds[1]).isMovingRight == true && pointers.getPointer(pointers.pointerIds[1]).horizontalSpeed >= 300 && onPage == "page3") {
+            elemp1.style.left = "2%";
+            elemp2.style.left = "2%";
+            elemp1.style.top = "0px";
+            elemp2.style.top = "0px";
             onPage = "page2";
           }
           if (pointers.numOfPointers >= 2 && pointers.getPointer(pointers.pointerIds[1]).verticalSpeed >= 500 && onPage == "page3") {
             elemp3.style.zIndex = "5";
           }
-          if (pointers.currentXpos(pointers.pointerIds[1]) >= 150 && pointers.currentXpos(pointers.pointerIds[1]) >= 300
+          if (pointers.currentXpos(pointers.pointerIds[1]) >= 150 && pointers.currentXpos(pointers.pointerIds[1]) <= 300
             && pointers.currentYpos(pointers.pointerIds[1]) >= 100 && pointers.currentYpos(pointers.pointerIds[1]) <= 300) {
             Pressure.set('#frontPage', {
               change: function (force) {
-                console.log(force);
+                if (force == 1) {
+                  elemp1.style.left = "4%";
+                  elemp2.style.left = "6%";
+                  elemp1.style.top = "2%";
+                  elemp2.style.top = "4%";
+                }
               }
             });
           }
           break;
-      }
+        }
     }
     else{
       elem.style.opacity = "1";
@@ -108,6 +153,12 @@ function displayData() {
       elemp2.style.zIndex = "-1";
       elemp3.style.zIndex = "-2";
       elemp1.style.zIndex = "0";
+      elemp1.style.left = "2%";
+      elemp2.style.left = "2%";
+      elemp1.style.top = "0px";
+      elemp2.style.top = "0px";
+      elemp3.style.top = "0px";
+      elemp3.style.left = "2%";
     }
   }
 }
