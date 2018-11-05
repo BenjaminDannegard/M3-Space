@@ -64,24 +64,30 @@ function displayData() {
             elemp2.style.top = "0px";
             elemp1.style.top = "0px";
             elemp1.style.left = "2%";
+            elemp1.style.transform = "rotate(0deg)";
+            elemp3.style.transform = "rotate(0deg)";
+            elemp2.style.transform = "rotate(0deg)";
             elem.style.visibility = "visible";
             onPage = "page2";
+            break;
           }
           if (pointers.numOfPointers >= 2 && pointers.getPointer(pointers.pointerIds[1]).verticalSpeed >= 300 && onPage == "page1") {
             elem.style.visibility = "hidden";
           }
-          if (pointers.currentXpos(pointers.pointerIds[1]) >= 150 && pointers.currentXpos(pointers.pointerIds[1]) <= 300
-            && pointers.currentYpos(pointers.pointerIds[1]) >= 100 && pointers.currentYpos(pointers.pointerIds[1]) <= 500) {
+          if (pointers.numOfPointers >= 2 && pointers.currentXpos(pointers.pointerIds[1]) >= 150 && pointers.currentXpos(pointers.pointerIds[1]) <= 300
+            && pointers.currentYpos(pointers.pointerIds[1]) >= 100 && pointers.currentYpos(pointers.pointerIds[1]) <= 500 && onPage == "page1") {
             Pressure.set('#frontPage', {
               change: function (force) {
-                console.log(force);
                 if (force == 1) {
-                  elemp3.style.left = "12%";
-                  elemp2.style.left = "7%";
-                  elemp3.style.top = "4%";
-                  elemp2.style.top = "2%";
+                  elemp3.style.left = "14%";
+                  elemp2.style.left = "8%";
+                  elemp3.style.top = "3%";
+                  elemp2.style.top = "1%";
                   elemp1.style.top = "0px";
                   elemp1.style.left = "2%";
+                  elemp1.style.transform = "rotate(0deg)";
+                  elemp2.style.transform = "rotate(5deg)";
+                  elemp3.style.transform = "rotate(15deg)";
                 }
               }
             });
@@ -102,32 +108,70 @@ function displayData() {
             elemp3.style.left = "2%";
             elemp1.style.top = "0px";
             elemp3.style.top = "0px";
+            elemp1.style.transform = "rotate(0deg)";
+            elemp3.style.transform = "rotate(0deg)";
+            elemp2.style.transform = "rotate(0deg)";
             elem.style.visibility = "visible";
             onPage = "page1";
+            break;
           }
           if (pointers.numOfPointers >= 2 && pointers.getPointer(pointers.pointerIds[1]).isMovingLeft == true && pointers.getPointer(pointers.pointerIds[1]).horizontalSpeed < -300 && onPage == "page2") {
             elemp1.style.left = "2%";
             elemp3.style.left = "2%";
             elemp1.style.top = "0px";
             elemp3.style.top = "0px";
+            elemp1.style.transform = "rotate(0deg)";
+            elemp3.style.transform = "rotate(0deg)";
+            elemp2.style.transform = "rotate(0deg)";
             elem.style.visibility = "visible";
             onPage = "page3";
+            break;
           }
+
+          if(elemp1.style.left == "8%" || elemp3.style.left == "14%")
+          {
+            if(pointers.currentXpos(pointers.pointerIds[1]) >= 300 && pointers.currentXpos(pointers.pointerIds[1]) <= 350
+            && pointers.currentYpos(pointers.pointerIds[1]) >= 100 && pointers.currentYpos(pointers.pointerIds[1]) <= 300)
+            {
+              elemp3.style.left = "2%";
+              elemp3.style.top = "0px";
+              elemp1.style.transform = "rotate(0deg)";
+              elemp3.style.transform = "rotate(0deg)";
+              elemp2.style.transform = "rotate(0deg)";
+              onPage = "page1";
+              break;
+            }
+            if(pointers.currentXpos(pointers.pointerIds[1]) >= 350 && pointers.currentXpos(pointers.pointerIds[1]) <= 400
+            && pointers.currentYpos(pointers.pointerIds[1]) >= 100 && pointers.currentYpos(pointers.pointerIds[1]) <= 300)
+            {
+              elemp1.style.left = "2%";
+              elemp1.style.top = "0px";
+              elemp1.style.transform = "rotate(0deg)";
+              elemp3.style.transform = "rotate(0deg)";
+              elemp2.style.transform = "rotate(0deg)";
+              onPage = "page3";
+              break;
+            }
+          }
+
           if (pointers.numOfPointers >= 2 && pointers.getPointer(pointers.pointerIds[1]).verticalSpeed >= 500 && onPage == "page2") {
             elem.style.visibility = "hidden";
           }
-          if (pointers.currentXpos(pointers.pointerIds[1]) >= 150 && pointers.currentXpos(pointers.pointerIds[1]) <= 300
-            && pointers.currentYpos(pointers.pointerIds[1]) >= 100 && pointers.currentYpos(pointers.pointerIds[1]) <= 500) {
+          if (pointers.numOfPointers >= 2 && pointers.currentXpos(pointers.pointerIds[1]) >= 150 && pointers.currentXpos(pointers.pointerIds[1]) <= 300
+            && pointers.currentYpos(pointers.pointerIds[1]) >= 100 && pointers.currentYpos(pointers.pointerIds[1]) <= 500 && onPage == "page2") {
             Pressure.set('#frontPage', {
               change: function (force) {
                 console.log(force);
                 if (force == 1) {
-                  elemp1.style.left = "7%";
-                  elemp3.style.left = "12%";
-                  elemp1.style.top = "2%";
-                  elemp3.style.top = "4%";
+                  elemp1.style.left = "8%";
+                  elemp3.style.left = "14%";
+                  elemp1.style.top = "1%";
+                  elemp3.style.top = "3%";
                   elemp2.style.top = "0%";
                   elemp2.style.left = "2%";
+                  elemp1.style.transform = "rotate(5deg)";
+                  elemp3.style.transform = "rotate(15deg)";
+                  elemp2.style.transform = "rotate(0deg)";
                 }
               }
             });
@@ -148,22 +192,57 @@ function displayData() {
             elemp1.style.top = "0px";
             elemp2.style.top = "0px";
             elem.style.visibility = "visible";
+            elemp1.style.transform = "rotate(0deg)";
+            elemp3.style.transform = "rotate(0deg)";
+            elemp2.style.transform = "rotate(0deg)";
             onPage = "page2";
+            break;
           }
           if (pointers.numOfPointers >= 2 && pointers.getPointer(pointers.pointerIds[1]).verticalSpeed >= 500 && onPage == "page3") {
             elem.style.visibility = "hidden";
           }
-          if (pointers.currentXpos(pointers.pointerIds[1]) >= 100 && pointers.currentXpos(pointers.pointerIds[1]) <= 300
-            && pointers.currentYpos(pointers.pointerIds[1]) >= 100 && pointers.currentYpos(pointers.pointerIds[1]) <= 500) {
+          if(elemp1.style.left == "8%" || elemp2.style.left == "14%")
+          {
+            if(pointers.currentXpos(pointers.pointerIds[1]) >= 300 && pointers.currentXpos(pointers.pointerIds[1]) <= 325
+            && pointers.currentYpos(pointers.pointerIds[1]) >= 100 && pointers.currentYpos(pointers.pointerIds[1]) <= 300)
+            {
+
+              elemp2.style.left = "2%";
+              elemp2.style.top = "0px";
+              elemp1.style.transform = "rotate(0deg)";
+              elemp3.style.transform = "rotate(0deg)";
+              elemp2.style.transform = "rotate(0deg)";
+              onPage = "page1";
+              break;
+            }
+            if(pointers.currentXpos(pointers.pointerIds[1]) >= 325 && pointers.currentXpos(pointers.pointerIds[1]) <= 350
+            && pointers.currentYpos(pointers.pointerIds[1]) >= 100 && pointers.currentYpos(pointers.pointerIds[1]) <= 300)
+            {
+
+              elemp1.style.left = "2%";
+              elemp1.style.top = "0px";
+              elemp1.style.transform = "rotate(0deg)";
+              elemp3.style.transform = "rotate(0deg)";
+              elemp2.style.transform = "rotate(0deg)";
+              onPage = "page2";
+              break;
+            }
+          }
+          if (pointers.numOfPointers >= 2 && pointers.currentXpos(pointers.pointerIds[1]) >= 100 && pointers.currentXpos(pointers.pointerIds[1]) <= 300
+            && pointers.currentYpos(pointers.pointerIds[1]) >= 100 && pointers.currentYpos(pointers.pointerIds[1]) <= 500 && onPage == "page3") {
             Pressure.set('#frontPage', {
               change: function (force) {
                 if (force == 1) {
-                  elemp1.style.left = "7%";
-                  elemp2.style.left = "12%";
-                  elemp1.style.top = "2%";
-                  elemp2.style.top = "4%";
+                  elemp1.style.left = "8%";
+                  elemp2.style.left = "14%";
+                  elemp1.style.top = "1%";
+                  elemp2.style.top = "3%";
                   elemp3.style.top = "0px";
                   elemp3.style.left = "2%";
+                  elemp1.style.transform = "rotate(5deg)";
+                  elemp2.style.transform = "rotate(15deg)";
+                  elemp3.style.transform = "rotate(0deg)";
+
                 }
               }
             });
@@ -188,6 +267,9 @@ function displayData() {
       elemp3.style.top = "0px";
       elemp3.style.left = "2%";
       elem.style.visibility = "visible";
+      elemp1.style.transform = "rotate(0deg)";
+      elemp3.style.transform = "rotate(0deg)";
+      elemp2.style.transform = "rotate(0deg)";
     }
   }
 }
@@ -201,7 +283,7 @@ function onPointerUp(e) {
 function onPointerDown(e) {
   e.preventDefault();
   pointers.updatePointer(e);
-  setInterval(displayData, 500);
+  setInterval(displayData, 1000);
   /*if(!window.addEventListener('mousemove', divMove, true))
     window.addEventListener('mousemove', divMove, true);
   else
