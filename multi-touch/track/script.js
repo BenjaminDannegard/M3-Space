@@ -71,7 +71,7 @@ function displayData() {
             elem.style.visibility = "hidden";
           }
           if (pointers.currentXpos(pointers.pointerIds[1]) >= 150 && pointers.currentXpos(pointers.pointerIds[1]) <= 300
-            && pointers.currentYpos(pointers.pointerIds[1]) >= 100 && pointers.currentYpos(pointers.pointerIds[1]) <= 300) {
+            && pointers.currentYpos(pointers.pointerIds[1]) >= 100 && pointers.currentYpos(pointers.pointerIds[1]) <= 500) {
             Pressure.set('#frontPage', {
               change: function (force) {
                 console.log(force);
@@ -117,13 +117,13 @@ function displayData() {
             elem.style.visibility = "hidden";
           }
           if (pointers.currentXpos(pointers.pointerIds[1]) >= 150 && pointers.currentXpos(pointers.pointerIds[1]) <= 300
-            && pointers.currentYpos(pointers.pointerIds[1]) >= 100 && pointers.currentYpos(pointers.pointerIds[1]) <= 300) {
+            && pointers.currentYpos(pointers.pointerIds[1]) >= 100 && pointers.currentYpos(pointers.pointerIds[1]) <= 500) {
             Pressure.set('#frontPage', {
               change: function (force) {
                 console.log(force);
                 if (force == 1) {
-                  elemp1.style.left = "4%";
-                  elemp3.style.left = "6%";
+                  elemp1.style.left = "7%";
+                  elemp3.style.left = "12%";
                   elemp1.style.top = "2%";
                   elemp3.style.top = "4%";
                   elemp2.style.top = "0%";
@@ -154,12 +154,12 @@ function displayData() {
             elem.style.visibility = "hidden";
           }
           if (pointers.currentXpos(pointers.pointerIds[1]) >= 100 && pointers.currentXpos(pointers.pointerIds[1]) <= 300
-            && pointers.currentYpos(pointers.pointerIds[1]) >= 100 && pointers.currentYpos(pointers.pointerIds[1]) <= 300) {
+            && pointers.currentYpos(pointers.pointerIds[1]) >= 100 && pointers.currentYpos(pointers.pointerIds[1]) <= 500) {
             Pressure.set('#frontPage', {
               change: function (force) {
                 if (force == 1) {
-                  elemp1.style.left = "4%";
-                  elemp2.style.left = "6%";
+                  elemp1.style.left = "7%";
+                  elemp2.style.left = "12%";
                   elemp1.style.top = "2%";
                   elemp2.style.top = "4%";
                   elemp3.style.top = "0px";
